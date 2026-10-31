@@ -4,138 +4,234 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GradApp: pool the GPUs around you</title>
-    <meta name="description" content="GradApp turns the NVIDIA, Intel and Apple GPUs on your network into one training cluster. Download for Windows, macOS and Linux." />
-    <meta name="theme-color" content="#eef1f5" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0d1016" media="(prefers-color-scheme: dark)" />
+    <meta name="description" content="GradApp turns the NVIDIA, Intel and Apple GPUs on your network into one training cluster. Free for Windows, macOS and Linux." />
+    <meta name="theme-color" content="#fffdee" />
     <meta property="og:title" content="GradApp" />
-    <meta property="og:description" content="Every GPU in the room, one training run. Free for Windows, macOS and Linux." />
+    <meta property="og:description" content="Don't buy a bigger GPU. Borrow the room's. Free for Windows, macOS and Linux." />
     <meta property="og:image" content="assets/og.png" />
     <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <a class="skip" href="#download">Skip to download</a>
 
-    <header class="top">
-      <a class="brand" href="#" aria-label="GradApp home">
-        <img src="assets/icon.svg" alt="" width="28" height="28" />
-        <span>GradApp</span>
-      </a>
-      <nav class="top-nav" aria-label="Page">
-        <a href="#how">How it works</a>
-        <a href="#download">Download</a>
-        <a href="#faq">Questions</a>
-        <a href="https://github.com/UJESH2K/gradapp" class="top-gh">GitHub</a>
+    <div class="announce">
+      <span>GradApp 1.0 is out for Windows, macOS and Linux.</span>
+      <a href="#download">Download free <span aria-hidden="true">›</span></a>
+    </div>
+
+    <header class="nav-wrap">
+      <nav class="nav" aria-label="Main">
+        <a class="brand" href="#" aria-label="GradApp home">
+          <img src="assets/icon.svg" alt="" width="26" height="26" />
+          <span>GradApp</span>
+        </a>
+        <div class="seg" role="tablist" aria-label="What you want to do">
+          <button role="tab" class="seg-btn is-on" aria-selected="true" data-mode="contribute">Contribute</button>
+          <button role="tab" class="seg-btn" aria-selected="false" data-mode="host">Host</button>
+        </div>
+        <div class="nav-links">
+          <a href="#how">How it works</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://github.com/UJESH2K/gradapp">GitHub</a>
+        </div>
+        <a class="btn btn-lav btn-nav js-primary" href="#download">
+          <span class="os-icon js-os-icon" aria-hidden="true"></span><span class="js-primary-label">Download free</span>
+        </a>
       </nav>
     </header>
 
     <main>
+      <!-- Hero -->
       <section class="hero">
-        <div class="hero-copy">
-          <h1>Every GPU in the room, one training run.</h1>
-          <p class="hero-lede">
-            GradApp finds the other computers on your Wi-Fi, gives each one a slice of your dataset sized to its GPU, and averages what they learn
-            into one model. NVIDIA, Intel Arc and Apple Silicon, side by side.
-          </p>
-          <div class="cta" id="cta">
-            <a class="btn-download" id="primary-download" href="#download">
-              <span class="btn-os-icon" id="primary-icon" aria-hidden="true"></span>
-              <span class="btn-text">
-                <span class="btn-title" id="primary-title">Download GradApp</span>
-                <span class="btn-sub" id="primary-sub">Free, for Windows, macOS and Linux</span>
-              </span>
-            </a>
-            <a class="link-quiet" href="#download" id="other-platforms">Other platforms</a>
-          </div>
-          <p class="hero-note" id="hero-note"></p>
-        </div>
+        <svg class="orbit-text" viewBox="0 0 300 300" aria-hidden="true">
+          <defs><path id="circle" d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0" /></defs>
+          <text><textPath href="#circle">RTX 4070 · Arc A770 · M3 Pro · RTX 3060 · M1 Air · Arc B580 · RTX 4090 · </textPath></text>
+        </svg>
+        <svg class="orbit-text orbit-text-right" viewBox="0 0 300 300" aria-hidden="true">
+          <defs><path id="circle2" d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0" /></defs>
+          <text><textPath href="#circle2">612 images · 251 images · 193 images · round 3 of 8 · averaging weights · </textPath></text>
+        </svg>
 
-        <figure class="mesh-figure" aria-label="Three machines training one model: an RTX 4070 takes 612 images, an Arc A770 251, an M3 Pro 193.">
-          <svg class="mesh" viewBox="0 0 440 400" role="img" aria-hidden="true">
-            <g class="mesh-links">
-              <path id="l1" d="M220 200 L82 92" />
-              <path id="l2" d="M220 200 L362 108" />
-              <path id="l3" d="M220 200 L220 352" />
-            </g>
-            <g class="mesh-packets">
-              <circle r="4" class="packet"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#l1" /></animateMotion></circle>
-              <circle r="4" class="packet"><animateMotion dur="3.1s" repeatCount="indefinite" begin="-1s"><mpath href="#l2" /></animateMotion></circle>
-              <circle r="4" class="packet"><animateMotion dur="3.6s" repeatCount="indefinite" begin="-2s"><mpath href="#l3" /></animateMotion></circle>
-            </g>
-            <g class="mesh-host">
-              <circle cx="220" cy="200" r="40" class="host-ring" />
-              <circle cx="220" cy="200" r="26" class="host-dot" />
-              <text x="220" y="205" text-anchor="middle" class="host-label">avg</text>
-            </g>
-            <g class="node" transform="translate(82 92)">
-              <circle r="14" class="node-dot nvidia" />
-              <text y="-26" text-anchor="middle" class="node-name">RTX 4070</text>
-              <text y="34" text-anchor="middle" class="node-shard">612 images</text>
-            </g>
-            <g class="node" transform="translate(362 108)">
-              <circle r="14" class="node-dot intel" />
-              <text y="-26" text-anchor="middle" class="node-name">Arc A770</text>
-              <text y="34" text-anchor="middle" class="node-shard">251 images</text>
-            </g>
-            <g class="node" transform="translate(220 352)">
-              <circle r="14" class="node-dot apple" />
-              <text y="-24" text-anchor="end" dx="-24" class="node-name">M3 Pro</text>
-              <text y="-8" text-anchor="end" dx="-24" class="node-shard">193 images</text>
-            </g>
-          </svg>
-          <figcaption>Shards are sized so every machine finishes the round together.</figcaption>
-        </figure>
-      </section>
-
-      <section class="how" id="how" aria-labelledby="how-title">
-        <h2 id="how-title">Three steps, no terminal</h2>
-        <ol class="steps">
-          <li>
-            <h3>One computer hosts</h3>
-            <p>Open GradApp and press <b>Host a mesh</b>. It sets up the coordinator, downloads the base YOLO models and installs PyTorch in its own folder.</p>
-          </li>
-          <li>
-            <h3>Everyone else presses Join</h3>
-            <p>GradApp on the other machines finds the mesh on the same network, detects the GPU, installs the matching PyTorch build and runs a test kernel before joining.</p>
-          </li>
-          <li>
-            <h3>Train together</h3>
-            <p>Upload a YOLO dataset, start a run, and watch each machine take its shard. Download the averaged weights when it finishes.</p>
-          </li>
-        </ol>
-        <p class="how-aside">
-          Closing the window keeps GradApp running quietly in the tray, so a machine can lend its GPU overnight and stop with one click.
+        <p class="eyebrow">GradApp for GradMesh</p>
+        <h1 class="display">
+          <span data-copy="contribute">Don’t buy a GPU,</span><span data-copy="host" hidden>Every GPU in the room,</span>
+          <em><span data-copy="contribute">borrow the room’s.</span><span data-copy="host" hidden>one training run.</span></em>
+        </h1>
+        <p class="lede">
+          <span data-copy="contribute">Lend your idle GPU to a training mesh on your Wi-Fi with one click. GradApp installs the right PyTorch, proves it runs, and joins.</span>
+          <span data-copy="host" hidden>Host a mesh and every NVIDIA, Intel and Apple GPU nearby trains your YOLO model together, each on a slice sized to its speed.</span>
         </p>
+        <a class="btn btn-lav btn-lg js-primary" href="#download">
+          <span class="os-icon js-os-icon" aria-hidden="true"></span><span class="js-primary-label">Download free</span>
+        </a>
+        <p class="avail js-avail">Available on Windows, macOS and Linux</p>
       </section>
 
-      <section class="downloads" id="download" aria-labelledby="dl-title">
-        <div class="downloads-head">
-          <h2 id="dl-title">Download</h2>
-          <p class="dim" id="release-line">Always the newest release.</p>
+      <!-- Works with -->
+      <section class="band band-ink" aria-label="Works with">
+        <p class="kicker">Works with the hardware you already have</p>
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span>NVIDIA CUDA</span><span>Intel Arc</span><span>Apple Silicon</span><span>PyTorch 2.13</span><span>Ultralytics YOLO</span><span>Windows</span><span>macOS</span><span>Linux</span>
+            <span>NVIDIA CUDA</span><span>Intel Arc</span><span>Apple Silicon</span><span>PyTorch 2.13</span><span>Ultralytics YOLO</span><span>Windows</span><span>macOS</span><span>Linux</span>
+          </div>
         </div>
+        <p class="sr-only">NVIDIA CUDA, Intel Arc, Apple Silicon, PyTorch 2.13, Ultralytics YOLO, on Windows, macOS and Linux.</p>
+      </section>
+
+      <!-- Speed -->
+      <section class="band band-green">
+        <h2 class="display center">One more laptop, <em>half again faster</em></h2>
+        <p class="lede center on-dark">
+          Each round, GradMesh gives every machine a shard it can finish in the same time, then averages what they learned. Measured on GradMesh's own sweep with 1,000 images:
+        </p>
+        <div class="compare">
+          <article class="cmp cmp-plain">
+            <p class="cmp-label">One machine</p>
+            <p class="cmp-num">1.0×</p>
+            <div class="bars"><span style="--w: 100%"></span></div>
+            <p class="cmp-note">Every image on one GPU</p>
+          </article>
+          <article class="cmp cmp-rich">
+            <p class="cmp-label">Two machines with GradApp</p>
+            <p class="cmp-num">1.53×</p>
+            <div class="bars"><span style="--w: 62%"></span><span class="b2" style="--w: 38%"></span></div>
+            <p class="cmp-note">Shards sized so both finish together</p>
+          </article>
+        </div>
+        <p class="fineprint on-dark">Gains grow with the dataset and shrink with very small ones, because each round has a fixed cost per machine. The app shows the measured speed-up for every run.</p>
+      </section>
+
+      <!-- How it works -->
+      <section class="how" id="how">
+        <p class="eyebrow center">How it works</p>
+        <h2 class="display center">Three clicks, <em>no terminal</em></h2>
+
+        <div class="feature">
+          <div class="feature-copy">
+            <span class="step-n">1</span>
+            <h3>One computer hosts</h3>
+            <p>Press <b>Host a mesh</b>. GradApp sets up the coordinator, downloads the base YOLO models and installs PyTorch in its own folder while the mesh is already live.</p>
+          </div>
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i><span>GradApp</span></div>
+            <div class="mock-body">
+              <p class="m-title">Your mesh is live</p>
+              <p class="m-dim">3 machines online. Others join from the Invite page.</p>
+              <div class="m-row"><span class="m-btn m-lav">Invite machines</span><span class="m-btn">Use this machine too</span></div>
+              <div class="m-orbit"><i class="c"></i><i class="p p1"></i><i class="p p2"></i><i class="p p3"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature feature-flip">
+          <div class="feature-copy">
+            <span class="step-n">2</span>
+            <h3>Everyone else presses Join</h3>
+            <p>GradApp finds the mesh on the same Wi-Fi by itself, detects the GPU, installs the matching PyTorch build and runs a test kernel before it joins. Or open an invite link and press Connect.</p>
+          </div>
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i><span>Contribute this GPU</span></div>
+            <div class="mock-body">
+              <div class="m-mesh"><span class="m-wifi"></span><div><b>Lab mesh</b><small>192.168.1.20 · 3 online</small></div><span class="m-btn m-lav">Join</span></div>
+              <ol class="m-steps"><li class="d">Python</li><li class="d">GPU</li><li class="d">PyTorch</li><li class="a">Test kernel</li><li>Join</li></ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-copy">
+            <span class="step-n">3</span>
+            <h3>Train together</h3>
+            <p>Upload a YOLO dataset, start a run, and watch every machine take its shard. Save the averaged weights when it finishes. Close the window and GradApp keeps going in the tray.</p>
+          </div>
+          <div class="mock" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i><span>Mesh</span></div>
+            <div class="mock-body m-table">
+              <div class="m-tr"><span><i class="v nv"></i>RTX 4070</span><span class="m-pill m-busy">Training 67%</span></div>
+              <div class="m-tr"><span><i class="v in"></i>Arc A770</span><span class="m-pill m-busy">Training 61%</span></div>
+              <div class="m-tr"><span><i class="v ap"></i>M3 Pro</span><span class="m-pill m-live">Ready</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vendors -->
+      <section class="vendors band band-cream2">
+        <h2 class="display center">Built around <em>the GPU you have</em></h2>
+        <div class="tabs" role="tablist" aria-label="GPU vendor">
+          <button role="tab" class="tab is-on" aria-selected="true" data-vendor="nvidia">NVIDIA</button>
+          <button role="tab" class="tab" aria-selected="false" data-vendor="intel">Intel Arc</button>
+          <button role="tab" class="tab" aria-selected="false" data-vendor="apple">Apple Silicon</button>
+        </div>
+        <div class="vendor-card" data-panel="nvidia">
+          <p class="v-big">CUDA</p>
+          <p>GTX 900 series or newer, on Windows or Linux. Driver 580 or newer (RTX 50 series: 570). GradApp picks the CUDA 12.6, 12.8 or 13.0 build that matches your driver.</p>
+        </div>
+        <div class="vendor-card" data-panel="intel" hidden>
+          <p class="v-big">XPU</p>
+          <p>Arc A or B series, or Core Ultra with Arc graphics, on Windows or Linux with a current Intel driver. Same PyTorch version as everyone else, so weights average cleanly.</p>
+        </div>
+        <div class="vendor-card" data-panel="apple" hidden>
+          <p class="v-big">Metal</p>
+          <p>M1 or later on macOS 14 Sonoma or newer. An 8 GB MacBook Air is enough to take a shard. Intel Macs cannot train yet.</p>
+        </div>
+      </section>
+
+      <!-- Feature grid -->
+      <section class="grid-sec">
+        <h2 class="display center">Made to <em>stay out of the way</em></h2>
+        <div class="grid">
+          <article class="card">
+            <h3>Finds the mesh itself</h3>
+            <p>No IP addresses to read off a screen. GradApp looks on your network and shows the meshes it finds.</p>
+          </article>
+          <article class="card">
+            <h3>Fair shards</h3>
+            <p>Each machine's speed and fixed overhead are learned round by round, so a fast desktop and a slow laptop finish together.</p>
+          </article>
+          <article class="card">
+            <h3>Quiet in the tray</h3>
+            <p>Close the window and it keeps contributing. Open at login, start hidden, rejoin the last mesh: all optional.</p>
+          </article>
+          <article class="card">
+            <h3>Joinable without the app</h3>
+            <p>A GradApp host still serves the one-line join commands, so a lab PC can lend its GPU from a terminal.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Privacy -->
+      <section class="band band-ink privacy">
+        <div class="privacy-in">
+          <h2 class="display on-dark">Your data <em>stays in the room</em></h2>
+          <p class="lede on-dark">The dataset lives on the host. Each machine fetches only the images in its shard, training runs with telemetry and update checks switched off, and nothing goes to a cloud. The only internet traffic is the one-time download of PyTorch and the base models.</p>
+          <p class="fineprint on-dark">A mesh is protected by a token that anyone on the network can read from the host. Use it on networks you trust: a lab, a dorm, your home.</p>
+        </div>
+      </section>
+
+      <!-- Download -->
+      <section class="downloads" id="download">
+        <h2 class="display center">Download <em>GradApp</em></h2>
+        <p class="lede center" id="release-line">Free. Always the newest release.</p>
         <div class="platforms" id="platforms">
           <article class="platform" data-os="windows">
             <h3>Windows</h3>
             <p class="req">Windows 10 or 11, 64-bit</p>
             <a class="dl" data-asset="windows-exe" href="#">Installer <span class="ext">.exe</span></a>
             <a class="dl dl-alt" data-asset="windows-portable" href="#">Portable <span class="ext">.exe</span></a>
-            <details>
-              <summary>First launch</summary>
-              <p>If a blue SmartScreen window appears, choose <b>More info</b>, then <b>Run anyway</b>. GradApp is not code-signed yet.</p>
-            </details>
+            <details><summary>First launch</summary><p>If SmartScreen appears, choose <b>More info</b>, then <b>Run anyway</b>. GradApp is not code-signed yet. When Windows asks whether Python may use the network, allow it on private networks.</p></details>
           </article>
           <article class="platform" data-os="mac">
             <h3>macOS</h3>
             <p class="req">macOS 13 or newer. Apple Silicon or Intel.</p>
             <a class="dl" data-asset="mac-dmg" href="#">Disk image <span class="ext">.dmg</span></a>
             <a class="dl dl-alt" data-asset="mac-zip" href="#">Archive <span class="ext">.zip</span></a>
-            <details>
-              <summary>First launch</summary>
-              <p>Drag GradApp to Applications. The first time, Control-click it and choose <b>Open</b>. Training on a Mac needs Apple Silicon (M1 or later) and macOS 14.</p>
-            </details>
+            <details><summary>First launch</summary><p>Drag GradApp to Applications, then Control-click it and choose <b>Open</b> the first time. Training needs Apple Silicon and macOS 14, plus <code>brew install python@3.12</code>.</p></details>
           </article>
           <article class="platform" data-os="linux">
             <h3>Linux</h3>
@@ -143,70 +239,78 @@
             <a class="dl" data-asset="linux-appimage" href="#">AppImage</a>
             <a class="dl dl-alt" data-asset="linux-deb" href="#">Debian, Ubuntu <span class="ext">.deb</span></a>
             <a class="dl dl-alt" data-asset="linux-rpm" href="#">Fedora <span class="ext">.rpm</span></a>
-            <details>
-              <summary>First launch</summary>
-              <p>For the AppImage: <code>chmod +x GradApp-linux-x86_64.AppImage</code>, then run it. Ubuntu 24.04 may also need <code>sudo apt install libfuse2t64</code>.</p>
-            </details>
+            <details><summary>First launch</summary><p><code>chmod +x GradApp-linux-x86_64.AppImage</code>, then run it. Ubuntu 24.04 may also need <code>sudo apt install libfuse2t64</code>.</p></details>
           </article>
         </div>
-        <p class="checksums"><a href="https://github.com/UJESH2K/gradapp/releases/latest" id="all-releases">All files and checksums</a></p>
+        <p class="center small"><a href="https://github.com/UJESH2K/gradapp/releases/latest" id="all-releases">All files and checksums</a></p>
       </section>
 
-      <section class="needs" aria-labelledby="needs-title">
-        <h2 id="needs-title">What each machine needs</h2>
-        <div class="needs-table" role="table">
-          <div class="needs-row" role="row">
-            <span class="vendor nvidia" role="cell">NVIDIA</span>
-            <span role="cell">GTX 900 series or newer on Windows or Linux, driver 580 or newer (RTX 50 series: 570).</span>
-          </div>
-          <div class="needs-row" role="row">
-            <span class="vendor intel" role="cell">Intel</span>
-            <span role="cell">Arc A or B series, or Core Ultra with Arc graphics, on Windows or Linux with a current driver.</span>
-          </div>
-          <div class="needs-row" role="row">
-            <span class="vendor apple" role="cell">Apple</span>
-            <span role="cell">M1 or later on macOS 14 Sonoma or newer.</span>
-          </div>
-          <div class="needs-row" role="row">
-            <span class="vendor any" role="cell">Every machine</span>
-            <span role="cell">Python 3.10 to 3.13. On Windows GradApp installs it for you; on a Mac, <code>brew install python@3.12</code>.</span>
-          </div>
+      <!-- FAQ -->
+      <section class="faq" id="faq">
+        <h2 class="display center">Questions, <em>answered</em></h2>
+        <div class="faq-list">
+          <details>
+            <summary>Do I need Python?</summary>
+            <p>Yes, 3.10 to 3.13. On Windows GradApp installs Python 3.12 for you with one click. On a Mac run <code>brew install python@3.12</code>; on Linux use your package manager. Everything else installs into GradApp's own folders.</p>
+          </details>
+          <details>
+            <summary>Does my data leave the network?</summary>
+            <p>No. The dataset stays on the host and each machine fetches only the images in its shard. Training runs with telemetry and update checks switched off.</p>
+          </details>
+          <details>
+            <summary>How much faster is training?</summary>
+            <p>It depends on how many machines join and how big the dataset is. In GradMesh's measurements two machines reached 1.53× on 1,000 images and about 1.1× on 100. The Runs screen shows the measured speed-up for every run.</p>
+          </details>
+          <details>
+            <summary>Is it safe to join someone else's mesh?</summary>
+            <p>Join meshes on networks you trust. The host's training code runs on your GPU, and the mesh token can be read by anyone on the same network. Rotating the token on the host disconnects every machine.</p>
+          </details>
+          <details>
+            <summary>What does it install, and how do I remove it?</summary>
+            <p>Two folders: <code>~/.gradmesh/agent</code> for the contributor's PyTorch, and GradApp's data folder (Settings shows it). Uninstall the app and delete both to remove everything.</p>
+          </details>
+          <details>
+            <summary>I already use GradMesh from the terminal.</summary>
+            <p>GradApp speaks the same protocol. It joins meshes started with <code>npm run dev</code>, attaches to a coordinator already running on the same computer, and a GradApp host still serves the <code>irm … | iex</code> and <code>curl … | sh</code> join commands.</p>
+          </details>
         </div>
-        <p class="dim needs-note">A computer without a supported GPU can still host the mesh. AMD GPUs and Intel Macs cannot train yet.</p>
       </section>
 
-      <section class="faq" id="faq" aria-labelledby="faq-title">
-        <h2 id="faq-title">Questions</h2>
-        <details>
-          <summary>Does my data leave the network?</summary>
-          <p>No. The dataset stays on the host, each machine fetches only the images in its shard, and training runs with telemetry and update checks switched off. The only internet traffic is the one-time download of PyTorch and the base models.</p>
-        </details>
-        <details>
-          <summary>Is it safe to join a stranger's mesh?</summary>
-          <p>Join meshes on networks you trust. A mesh is protected by a token that anyone on the same network can read from the host, and the host's code runs on your GPU. GradApp is built for a lab, a dorm or a home network, not a coffee shop.</p>
-        </details>
-        <details>
-          <summary>How much faster is training?</summary>
-          <p>It depends on how many machines join and how big the dataset is, because every round has a fixed cost per machine. In GradMesh's own measurements two machines reached 1.5× on 1000 images and about 1.1× on 100. The Runs screen shows the measured speed-up for each run.</p>
-        </details>
-        <details>
-          <summary>What does it install, and how do I remove it?</summary>
-          <p>Everything goes into two folders: <code>~/.gradmesh/agent</code> for the contributor's PyTorch, and GradApp's own data folder (Settings shows it). Uninstall the app and delete those folders to remove all of it.</p>
-        </details>
-        <details>
-          <summary>Windows asked whether Python may use the network.</summary>
-          <p>Choose <b>Allow</b> for private networks. The host's coordinator listens on ports 8000 and 3000 so other machines can reach it; without the exception they cannot join. On a public network, do not host.</p>
-        </details>
-        <details>
-          <summary>I already use GradMesh from the terminal.</summary>
-          <p>GradApp speaks the same protocol. It can join a mesh started with <code>npm run dev</code>, attaches to a coordinator already running on the same computer, and a GradApp host still serves the <code>irm … | iex</code> and <code>curl … | sh</code> join commands.</p>
-        </details>
+      <!-- Closing CTA -->
+      <section class="band band-green closing">
+        <h2 class="display center on-dark">You have the GPUs. <em>Now use them together.</em></h2>
+        <a class="btn btn-lav btn-lg js-primary" href="#download">
+          <span class="os-icon js-os-icon" aria-hidden="true"></span><span class="js-primary-label">Download free</span>
+        </a>
+        <p class="avail on-dark js-avail">Available on Windows, macOS and Linux</p>
       </section>
     </main>
 
     <footer class="foot">
-      <span>GradApp is the desktop app for GradMesh, by <a href="https://github.com/UJESH2K">Ujesh Kumar Yadav</a>.</span>
-      <a href="https://github.com/UJESH2K/gradapp">Source</a>
+      <div class="foot-cols">
+        <div class="foot-brand">
+          <a class="brand" href="#"><img src="assets/icon.svg" alt="" width="26" height="26" /><span>GradApp</span></a>
+          <p>The desktop app for GradMesh, by <a href="https://github.com/UJESH2K">Ujesh Kumar Yadav</a>.</p>
+        </div>
+        <div>
+          <p class="foot-h">Product</p>
+          <a href="#how">How it works</a>
+          <a href="#download">Download</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div>
+          <p class="foot-h">Platforms</p>
+          <a href="#download" data-jump="windows">Windows</a>
+          <a href="#download" data-jump="mac">macOS</a>
+          <a href="#download" data-jump="linux">Linux</a>
+        </div>
+        <div>
+          <p class="foot-h">Project</p>
+          <a href="https://github.com/UJESH2K/gradapp">Source</a>
+          <a href="https://github.com/UJESH2K/gradapp/releases">Releases</a>
+          <a href="https://github.com/UJESH2K/Gradmesh-v5">GradMesh</a>
+        </div>
+      </div>
     </footer>
 
     <script src="app.js" defer></script>
