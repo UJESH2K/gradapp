@@ -67,7 +67,13 @@ npm run dist:linux   # dist/GradApp-linux-x86_64.AppImage, -amd64.deb, -x86_64.r
 git tag v1.0.0 && git push origin v1.0.0
 ```
 
-GitHub Actions builds Windows, macOS and Linux in parallel and attaches every file to a release. The download buttons on the website point at `releases/latest/download/<fixed file name>`, so they always serve the newest build. Pushes to `main` also publish `website/` to GitHub Pages (enable Pages → "GitHub Actions" in the repo settings once).
+GitHub Actions builds Windows, macOS and Linux in parallel and attaches every file to a release. The download buttons on the website point at `releases/latest/download/<fixed file name>`, so they always serve the newest build.
+
+### Deploy the website on Vercel
+
+1. vercel.com → **Add New… → Project** → import `UJESH2K/gradapp`.
+2. **Root Directory**: `website`. **Framework Preset**: Other. Leave Build Command and Output Directory empty.
+3. **Deploy.** Every push to `main` redeploys it; pull requests get preview URLs.
 
 If the repository lives somewhere else, change `REPO` at the top of `website/app.js`, `publish.owner/repo` in `desktop/electron-builder.yml`, and `REPO` in `desktop/src/main/updates.js`.
 

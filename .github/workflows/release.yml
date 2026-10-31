@@ -4,6 +4,8 @@
 #   Any push or pull request -> checks and a Linux smoke test, no release.
 #   Actions tab -> "Run workflow" -> builds all three as downloadable artifacts.
 #
+# The website (website/) is deployed by Vercel, not by this workflow.
+#
 # The website links to releases/latest/download/<fixed file name>, so a new
 # tag is all it takes to update every download button.
 
@@ -94,24 +96,3 @@ jobs:
             desktop/dist/GradApp-*
             desktop/dist/latest*.yml
           if-no-files-found: error
-
-  website:
-    # Publishes website/ to GitHub Pages on every push to main.
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: website
-      - id: deploy
-        uses: actions/deploy-pages@v4
