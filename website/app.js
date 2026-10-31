@@ -74,6 +74,10 @@
       var icon = btn.querySelector(".js-os-icon");
       if (icon) icon.innerHTML = ICONS[visitor.os];
     });
+    // Mark the visitor's own system among the small platform buttons.
+    $all("[data-os-chip]").forEach(function (chip) {
+      if (chip.getAttribute("data-os-chip") === visitor.os) chip.classList.add("is-current");
+    });
     var card = document.querySelector('.platform[data-os="' + visitor.os + '"]');
     if (card) {
       card.classList.add("is-yours");
@@ -161,6 +165,7 @@
           sizes[asset.name] = asset.size;
         });
         links.forEach(function (link) {
+          if (!link.classList.contains("dl")) return;
           var size = sizes[ASSETS[link.getAttribute("data-asset")]];
           if (size) {
             var span = document.createElement("span");
