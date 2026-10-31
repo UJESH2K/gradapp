@@ -1,0 +1,9 @@
+# CPU-only training plane.
+#
+# For a coordinator host whose GPU cannot train, which still needs PyTorch to
+# aggregate weights, and for machines with no supported accelerator. A CPU
+# machine joins the mesh, is measured, and is not given shards.
+--extra-index-url https://download.pytorch.org/whl/cpu
+-r requirements-common.txt
+torch==2.13.0+cpu
+torchvision==0.28.0+cpu

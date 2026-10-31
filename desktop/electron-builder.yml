@@ -1,0 +1,131 @@
+# GradApp packaging. One config, three operating systems.
+# File names are fixed (no version in them) so the website can always link to
+#   https://github.com/UJESH2K/gradapp/releases/latest/download/<name>
+appId: dev.gradmesh.gradapp
+productName: GradApp
+copyright: Copyright © 2026 Ujesh Kumar Yadav
+
+directories:
+  output: dist
+  buildResources: assets
+
+files:
+  - src/**/*
+  - package.json
+  - "!**/*.map"
+
+# The Python engine and icons live next to the app, not inside the asar:
+# Python has to read the engine files from a real folder.
+extraResources:
+  - from: engine
+    to: engine
+    filter:
+      - "**/*"
+      - "!**/__pycache__/**"
+      - "!**/*.pyc"
+      - "!tests/**"
+  - from: assets
+    to: assets
+    filter:
+      - "*.png"
+      - "*.svg"
+
+asar: true
+compression: normal
+
+protocols:
+  - name: GradApp invite
+    schemes:
+      - gradapp
+
+publish:
+  provider: github
+  owner: UJESH2K
+  repo: gradapp
+  releaseType: release
+
+win:
+  icon: assets/icon.png
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: portable
+      arch: [x64]
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: GradApp
+  artifactName: GradApp-windows-x64.${ext}
+  deleteAppDataOnUninstall: false
+
+portable:
+  artifactName: GradApp-windows-x64-portable.${ext}
+
+mac:
+  icon: assets/icon.png
+  category: public.app-category.developer-tools
+  minimumSystemVersion: "13.0"
+  target:
+    - target: dmg
+      arch: [universal]
+    - target: zip
+      arch: [universal]
+  artifactName: GradApp-mac-universal.${ext}
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  # Not signed yet; set CSC_LINK and APPLE_ID secrets in CI to sign and notarize.
+  identity: null
+  extendInfo:
+    LSUIElement: false
+    NSLocalNetworkUsageDescription: GradApp finds and joins GPU meshes on your local network.
+
+dmg:
+  title: GradApp
+  window:
+    width: 540
+    height: 380
+  contents:
+    - x: 140
+      y: 190
+    - x: 400
+      y: 190
+      type: link
+      path: /Applications
+
+linux:
+  icon: assets/icon.png
+  category: Utility
+  synopsis: Pool the GPUs on your network into one training cluster
+  description: GradApp lends this computer's GPU to a GradMesh training mesh, or hosts one.
+  maintainer: Ujesh Kumar Yadav <UJESH2K@users.noreply.github.com>
+  target:
+    - target: AppImage
+      arch: [x64]
+    - target: deb
+      arch: [x64]
+    - target: rpm
+      arch: [x64]
+  desktop:
+    entry:
+      StartupWMClass: GradApp
+      MimeType: x-scheme-handler/gradapp;
+
+appImage:
+  artifactName: GradApp-linux-x86_64.${ext}
+
+deb:
+  artifactName: GradApp-linux-amd64.${ext}
+  depends:
+    - libgtk-3-0
+    - libnss3
+    - libxss1
+    - libasound2 | libasound2t64
+  recommends:
+    - python3-venv
+
+rpm:
+  artifactName: GradApp-linux-x86_64.${ext}

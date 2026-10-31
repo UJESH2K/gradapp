@@ -1,0 +1,34 @@
+{
+  "name": "gradapp",
+  "productName": "GradApp",
+  "version": "1.0.0",
+  "description": "GradMesh on your desktop: lend your GPU to a training mesh, or host one, in one click.",
+  "author": {
+    "name": "Ujesh Kumar Yadav",
+    "url": "https://github.com/UJESH2K"
+  },
+  "homepage": "https://github.com/UJESH2K/gradapp",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "src/main/main.js",
+  "desktopName": "gradapp.desktop",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "check": "node scripts/check.mjs",
+    "sync-engine": "node scripts/sync-engine.mjs",
+    "icons": "python3 scripts/icons.py",
+    "dist": "electron-builder --publish never",
+    "dist:win": "electron-builder --win --publish never",
+    "dist:mac": "electron-builder --mac --publish never",
+    "dist:linux": "electron-builder --linux --publish never",
+    "release": "electron-builder --publish always"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "devDependencies": {
+    "electron": "44.7.0",
+    "electron-builder": "26.17.0"
+  }
+}
