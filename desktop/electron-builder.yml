@@ -28,7 +28,7 @@ extraResources:
     to: assets
     filter:
       - "*.png"
-      - "*.svg"
+      - "!logo-source.png"
 
 asar: true
 compression: normal

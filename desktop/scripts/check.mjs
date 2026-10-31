@@ -74,7 +74,7 @@ if (python) {
 }
 
 console.log("assets");
-for (const file of ["icon.png", "icon.svg", "tray.png", "tray-active.png", "trayTemplate.png", "trayActiveTemplate.png"]) {
+for (const file of ["icon.png", "logo.png", "tray.png", "tray-active.png", "trayTemplate.png", "trayActiveTemplate.png"]) {
   if (!existsSync(path.join(root, "assets", file))) fail(`assets/${file} is missing`);
 }
 ok("icons present");

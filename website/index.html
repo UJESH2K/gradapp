@@ -3,13 +3,48 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GradApp: pool the GPUs around you</title>
-    <meta name="description" content="GradApp turns the NVIDIA, Intel and Apple GPUs on your network into one training cluster. Free for Windows, macOS and Linux." />
+    <title>GradApp: lend your GPU, or turn a room of GPUs into one cluster</title>
+    <meta name="description" content="GradApp is the desktop app for GradMesh. Pool the NVIDIA, Intel Arc and Apple Silicon GPUs on your network into one training cluster. Free for Windows, macOS and Linux." />
+    <link rel="canonical" href="https://gradapp.ujesh.in/" />
     <meta name="theme-color" content="#f4f3ee" />
-    <meta property="og:title" content="GradApp" />
-    <meta property="og:description" content="Don't buy a bigger GPU. Borrow the room's. Free for Windows, macOS and Linux." />
-    <meta property="og:image" content="assets/og.png" />
-    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <meta name="application-name" content="GradApp" />
+    <meta name="apple-mobile-web-app-title" content="GradApp" />
+
+    <link rel="icon" href="assets/favicon.ico" sizes="any" />
+    <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GradApp" />
+    <meta property="og:url" content="https://gradapp.ujesh.in/" />
+    <meta property="og:title" content="GradApp: your idle GPU, someone's training run" />
+    <meta property="og:description" content="Pool the GPUs on your Wi-Fi into one training cluster. Free for Windows, macOS and Linux." />
+    <meta property="og:image" content="https://gradapp.ujesh.in/assets/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="The GradApp logo beside three GPUs training one model together" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GradApp: your idle GPU, someone's training run" />
+    <meta name="twitter:description" content="Pool the GPUs on your Wi-Fi into one training cluster. Free for Windows, macOS and Linux." />
+    <meta name="twitter:image" content="https://gradapp.ujesh.in/assets/og.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "GradApp",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Windows 10, Windows 11, macOS 13+, Linux",
+        "description": "Desktop app for GradMesh: lend your GPU to a training mesh on your network, or host one.",
+        "url": "https://gradapp.ujesh.in/",
+        "image": "https://gradapp.ujesh.in/assets/logo.png",
+        "downloadUrl": "https://github.com/UJESH2K/gradapp/releases/latest",
+        "softwareVersion": "1.0.0",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@type": "Person", "name": "Ujesh Kumar Yadav", "url": "https://github.com/UJESH2K" }
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -26,7 +61,7 @@
     <header class="nav-wrap">
       <nav class="nav" aria-label="Main">
         <a class="brand" href="#" aria-label="GradApp home">
-          <img src="assets/icon.svg" alt="" width="26" height="26" />
+          <img src="assets/logo-128.png" alt="" width="28" height="28" />
           <span>GradApp</span>
         </a>
         <div class="seg" role="tablist" aria-label="What you want to do">
@@ -329,7 +364,7 @@
     <footer class="foot">
       <div class="foot-cols">
         <div class="foot-brand">
-          <a class="brand" href="#"><img src="assets/icon.svg" alt="" width="26" height="26" /><span>GradApp</span></a>
+          <a class="brand" href="#"><img src="assets/logo-128.png" alt="" width="28" height="28" /><span>GradApp</span></a>
           <p>The desktop app for GradMesh, by <a href="https://github.com/UJESH2K">Ujesh Kumar Yadav</a>.</p>
         </div>
         <div>

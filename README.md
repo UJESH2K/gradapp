@@ -1,3 +1,5 @@
+<p align="center"><img src="desktop/assets/logo.png" alt="GradApp" width="112" /></p>
+
 # GradApp
 
 **GradMesh as a desktop app.** Download it, open it, press **Join** or **Host a mesh**. No terminal, no Node, no cloning a repo.

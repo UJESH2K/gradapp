@@ -22,7 +22,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const { AGENT_FILES } = require("./agent");
-const { engineDir } = require("./paths");
+const { engineDir, assetsDir } = require("./paths");
 
 const AGENT_SET = new Set(AGENT_FILES);
 
@@ -191,6 +191,7 @@ function joinPage({ web, meshName }) {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Join ${esc(meshName)}</title>
+<link rel="icon" href="/logo.png" type="image/png">
 <style>
 :root{--bg:#07080b;--card:#0e1117;--line:rgba(255,255,255,.08);--text:#e7eaf0;--dim:#98a2b6;--accent:#5b7cfa}
 @media (prefers-color-scheme:light){:root{--bg:#f6f7fb;--card:#fff;--line:rgba(0,0,0,.08);--text:#12151c;--dim:#5b6375}}
@@ -201,6 +202,7 @@ main{max-width:640px;margin:0 auto}h1{font-size:26px;margin:0 0 6px;letter-spaci
 code{display:block;font:13px/1.5 ui-monospace,Consolas,monospace;word-break:break-all;background:rgba(127,127,127,.1);padding:10px 12px;border-radius:9px;cursor:pointer}
 a.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;padding:10px 16px;border-radius:10px;font-weight:600}
 </style></head><body><main>
+<img src="/logo.png" alt="GradApp" width="44" height="44" style="display:block;margin-bottom:16px">
 <h1>Lend your GPU to ${esc(meshName)}</h1>
 <p>Easiest: install GradApp, open it, and press <b>Join</b>. It finds this mesh by itself.</p>
 <div class="card"><a class="btn" href="https://github.com/UJESH2K/gradapp/releases/latest">Get GradApp</a></div>
@@ -254,6 +256,14 @@ function startBeacon({ port, info }) {
       try {
         const body = fs.readFileSync(path.join(engineDir(), file));
         return send(200, file.endsWith(".py") ? "text/x-python; charset=utf-8" : "text/plain; charset=utf-8", body);
+      } catch {
+        return send(404, "text/plain", "Missing\n");
+      }
+    }
+    if (route === "/logo.png" || route === "/favicon.ico") {
+      try {
+        response.writeHead(200, { "Content-Type": "image/png", "Cache-Control": "public, max-age=86400" });
+        return response.end(fs.readFileSync(path.join(assetsDir(), "logo.png")));
       } catch {
         return send(404, "text/plain", "Missing\n");
       }

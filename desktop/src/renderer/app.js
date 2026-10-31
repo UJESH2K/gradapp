@@ -57,7 +57,7 @@ function shell() {
     h(
       "aside",
       { class: "sidebar" },
-      h("div", { class: "brand" }, h("img", { src: "./logo.svg", alt: "", width: 22, height: 22 }), h("span", { class: "brand-name" }, "GradApp")),
+      h("div", { class: "brand" }, h("img", { src: "./logo.png", alt: "", width: 24, height: 24 }), h("span", { class: "brand-name" }, "GradApp")),
       nav
     ),
     h(
